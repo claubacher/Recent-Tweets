@@ -7,6 +7,7 @@ require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
 
 # Require gems we care about
 require 'rubygems'
+require 'debugger'
 
 require 'uri'
 require 'pathname'
@@ -19,7 +20,7 @@ require 'sinatra'
 require "sinatra/reloader" if development?
 
 require 'erb'
-
+require 'oauth'
 require 'twitter'
 
 # Some helper constants for path-centric logic
@@ -35,8 +36,8 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 require APP_ROOT.join('config', 'database')
 
 Twitter.configure do |config|
-  config.consumer_key = 'UhmEQTawfWvYRT7KOPLkg'
-  config.consumer_secret = 'sqpDUr8kATmit72q1hSUw6iaUR0AokOZxpDPIOR8bg'
-  config.oauth_token = '383872514-Ysp8Het9xmCBBQ9g06errpd81tisCe8u7iSZUJO7'
-  config.oauth_token_secret = 'duo7RePIEIAHi0DMlW4YMgj9P1oka01ihUGkuY4Ksc'
+  config.consumer_key = ENV['TWITTER_KEY']
+  config.consumer_secret = ENV['TWITTER_SECRET']
+  # config.oauth_token = '383872514-Ysp8Het9xmCBBQ9g06errpd81tisCe8u7iSZUJO7'
+  # config.oauth_token_secret = 'duo7RePIEIAHi0DMlW4YMgj9P1oka01ihUGkuY4Ksc'
 end

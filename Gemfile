@@ -2,6 +2,7 @@ source :rubygems
 
 # PostgreSQL driver
 gem 'pg'
+gem 'debugger'
 
 # Sinatra driver
 gem 'sinatra'
@@ -22,4 +23,6 @@ group :test do
   gem 'rspec'
 end
 
+gem 'oauth'
 gem 'twitter'
+
